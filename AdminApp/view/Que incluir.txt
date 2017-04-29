@@ -1,0 +1,2 @@
+Aqui incluir todas las vistas dividas en carpetas de acuerdo 
+a los usuarios
