@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\CategoriaFormRequest;
-
+use App\Platillo;
+use Illuminate\Support\Facades\Redirect;
+use DB;
 class MenuController extends Controller
 {
   public function __construct()
@@ -15,15 +17,8 @@ class MenuController extends Controller
   }
   public function index()
   {
-    if ($request)
-    {
-        $query=trim($request->get('searchText'));
-        $platillos=DB::table('platillo as p')->where('nombreplatillo','LIKE','%'.$query.'%')
-        ->join('restaurante as r', 'p.idrestaurante',"=","r.idrestaurante")
-        ->select('a.id','a.nombre','a.codigo','a.stock','c.nombre as categoria','a.descripcion','a.imagen','a.estado')
-        ->paginate(7);
-        return view('almacen.categoria.index',["categorias"=>$categorias,"searchText"=>$query]);
-    }
+    $platillos= Platillo::all();
+     return view('adminrest.menu.index',["platillos"=>$platillos]);
   }
 
   public function create()

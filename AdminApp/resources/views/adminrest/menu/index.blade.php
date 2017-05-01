@@ -1,7 +1,7 @@
 @extends('layouts.rest')
 @section('contenido')
 <div class="big-padding text-center  whitw-text">
-	<h1>Restaurantes</h1>
+	<h1>Platillos</h1>
 </div>
 <div class="">
 	<table class="table table-bordered">
@@ -15,12 +15,12 @@
 		</tr>
 		</thead>
 		<tbody>
-			@foreach ()
+			@foreach ($platillos as $platillo)
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>{{$platillo->nombreplatillo}}</td>
+				<td>{{$platillo->precio}}</td>
+				<td>{{$platillo->categoria}}</td>
+				<td>{{$platillo->categoria}}</td>
 				<td>
 					<a href="">
 					Editar
@@ -31,8 +31,8 @@
 		</tbody>
 	</table>
 </div>
-<div class="floating">
-	<a href="{{url('/products/create')}}" class="btn btn-primary btn-fab">
+<div class="floating right-align">
+	<a href="{{url(" class="btn-floating waves-effect waves-light">
 		<i class="material-icons">add</i>
 	</a>
 </div>

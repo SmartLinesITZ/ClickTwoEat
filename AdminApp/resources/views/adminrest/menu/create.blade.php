@@ -1,50 +1,29 @@
 @extends('layouts.rest')
 <title>Registro</title>
 @section('contenido')
+<div class="col s10 offset-s1  card-panel ">
 {!!Form::open(array('url'=>'adminrest/menu','method'=>'POST'))!!}
-
-		<div class="row">
-			<div class="col s12">
-
-				<div class="col s12"><h3 class="center-align">Agregar Platillo</h3></div>
-					<div class="col s10 offset-s1 card-panel">
-					<div class="row">
-						<div class="col s6">
-							<label>Cetgorira</label>
- 							<select class="browser-default">
-	 							<option value="" disabled selected>Entra</option>
-	 							<option value="1">Ensalada</option>
-	 							<option value="2">Botana</option>
-	 							<option value="3">Platillo fuerte</option>
- 							</select>
-							</div>
-							<div class="input-field col s6">
-								<input id="last_name" type="text" class="validate">
-								<label for="last_name">Agregar Categoria</label>
-							</div>
-							</div>
-
-						<div class="row">
-							<div class="input-field col s6">
-								<input name="calle" id="calle" type="text" class="validate">
-								<label class="active" for="Usuario">Nombre del platillo</label>
-						</div>
-
-						<div class="row">
-							<div class="input-field col s6">
-								<input name="calle" id="calle" type="number" class="validate">
-								<label class="active" for="Usuario">Precio</label>
-						</div>
-
-						<div class="row">
-							<div class="input-field col s10 offset-s1">
-          			<textarea id="textarea1" class="materialize-textarea"></textarea>
-          			<label for="textarea1">Descripcion</label>
-        		</div>
-						</div>
-					</div>
-				</div>
-			</div>
+<div class="form-group">
+	{{ Form::text('nombreplatillo','',['class'=> 'form-control', 'placeholder'=>'Nombre del platillo'])}}
+</div>
+<div class="form-group">
+	{{ Form::text('precio','',['class'=> 'form-control', 'placeholder'=>'Nombre del platillo'])}}
+</div>
+<div class="form-group">
+	{{ Form::select('age', [
+   'young' => 'Under 18',
+   'adult' => '19 to 30',
+   'adult2' => 'Over 30']
+) }}
+</div>
+<div class="form-group">
+	{{ Form::textarea('descripcion','',['class'=> 'materialize-textarea', 'placeholder'=>'Nombre del platillo'])}}
+</div>
+<div class="form-group">
+	{{ Form::text('idrestaurante','',['class'=> 'form-control', 'placeholder'=>'Nombre del platillo'])}}
+</div>
+{!! Form::close() !!}
+</div>
 
 <?php//################################################### MENU #############################################################?>
 			<div class="col s10 offset-s1  card-panel ">
