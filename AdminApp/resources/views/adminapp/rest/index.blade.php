@@ -19,14 +19,13 @@
 			@foreach ($restaurantes as $rest)
 			<tr>
 				<td></td>
-				<td>Pendiente</td>
-				<td>Pendiente</td>
+				<td></td>
+				<td></td>
 				<td></td>
 				<td></td>
 				<td>
-					<a href="">
-					Editar
-					</a>
+					<a class="waves-effect waves-light btn blue">Editar</a>
+					<a class="waves-effect waves-light  btn red">Borrar</a>
 				</td>
 			</tr>
 			@endforeach
@@ -34,7 +33,7 @@
 	</table>
 </div>
 <div class="floating">
-	<a href="{{url('/products/create')}}" class="btn btn-primary btn-fab">
+	<a href="{{url('/products/create')}}" class="btn-floating btn-large waves-effect waves-light green">
 		<i class="material-icons">add</i>
 	</a>
 </div>

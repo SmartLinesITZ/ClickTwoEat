@@ -14,6 +14,8 @@ class Restaurante extends Model
 
     protected $fillable =[
     	'nombrerest',
+        'idrestaurante',
+        
     	'descripcion',
     	'domicilio',
     	'telefono',

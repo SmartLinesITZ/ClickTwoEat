@@ -3,33 +3,53 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 
 use App\Http\Requests;
-use App\Http\Requests\CategoriaFormRequest;
+use App\Http\Requests\Menu;
 use App\Platillo;
-use Illuminate\Support\Facades\Redirect;
 use DB;
+
 class MenuController extends Controller
 {
   public function __construct()
   {
 
   }
-  public function index()
+  public function index(Request $request)
   {
-    $platillos= Platillo::all();
-     return view('adminrest.menu.index',["platillos"=>$platillos]);
+    if ($request)
+    {
+        $query=trim($request->get('searchText'));
+        $platillos=DB::table('platillo as p')
+        ->join('restaurante as r', 'p.idrestaurante',"=","r.idrestaurante")
+        ->select('p.idplatillo','p.nombreplatillo','p.imagen','p.categoria','p.precio','p.descripcion')
+        ->where('p.nombreplatillo','LIKE','%'.$query.'%')
+        ->orderBy('p.idplatillo','desc')
+        ->paginate(7);
+        //return view("adminrest.menu.index",["platillos"=>$platillos,"searchText"=>$query]);
+        return reponse()->json($request, 200);
+      }
+
   }
 
   public function create()
   {
-    return view("adminrest.menu.create",[]);
+   return view("adminrest.menu.create");
   }
 
 
-  public function store(Request $request)
+  public function store(Menu $request)
   {
-
+      $platillo=new Platillo;
+      $platillo->idrestaurante=1;
+      $platillo->nombreplatillo=$request->get('nombreplatillo');
+      $platillo->precio=$request->get('precio');
+      $platillo->categoria=$request->get('categoria');
+      $platillo->descripcion=$request->get('descripcion');
+      $platillo->save();
+      return Redirect::to('adminrest/menu');
   }
 
 

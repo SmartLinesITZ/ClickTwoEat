@@ -27,6 +27,7 @@
     23 => 'App\\Providers\\AuthServiceProvider',
     24 => 'App\\Providers\\EventServiceProvider',
     25 => 'App\\Providers\\RouteServiceProvider',
+    26 => 'Collective\\Html\\HtmlServiceProvider',
   ),
   'eager' => 
   array (

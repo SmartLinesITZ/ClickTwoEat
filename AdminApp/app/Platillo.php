@@ -14,7 +14,7 @@ class Platillo extends Model
 
     protected $fillable =[
     	'idrestaurante',
-      'nombreplatillo',
+        'nombreplatillo',
     	'imagen',
     	'categoria',
     	'precio',
