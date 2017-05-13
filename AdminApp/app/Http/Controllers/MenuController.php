@@ -28,8 +28,8 @@ class MenuController extends Controller
         ->where('p.nombreplatillo','LIKE','%'.$query.'%')
         ->orderBy('p.idplatillo','desc')
         ->paginate(7);
-        //return view("adminrest.menu.index",["platillos"=>$platillos,"searchText"=>$query]);
-        return reponse()->json($request, 200);
+        return view("adminrest.menu.index",["platillos"=>$platillos,"searchText"=>$query]);
+        //return reponse()->json($request, 200);
       }
 
   }
